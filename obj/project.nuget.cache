@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "6rComtggey+X3OqPyPxMgs0birxvVfgc0C2s+Ym5wlomsxsE1di+7l13ZzWo+4Q4lMqWzT5g48QFkxJgq5hmJQ==",
+  "dgSpecHash": "txOxXVLgyNkrAUMpLWxnCyq9KyGS9VkkSFr4uTgj3/zVJ/PLCjcksVtfgLQxn97ybTfJHPJb3za5SK+kDoQK7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\diego\\Desktop\\Puertos\\APIPuertos\\APIPuertos.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.openapi\\1.6.23\\microsoft.openapi.1.6.23.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\swashbuckle.aspnetcore\\8.1.1\\swashbuckle.aspnetcore.8.1.1.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\8.1.1\\swashbuckle.aspnetcore.swagger.8.1.1.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\8.1.1\\swashbuckle.aspnetcore.swaggergen.8.1.1.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\8.1.1\\swashbuckle.aspnetcore.swaggerui.8.1.1.nupkg.sha512"
+  ],
   "logs": []
 }

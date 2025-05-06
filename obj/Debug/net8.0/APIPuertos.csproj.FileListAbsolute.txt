@@ -23,3 +23,11 @@ C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\refint\APIPuertos.dll
 C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\APIPuertos.pdb
 C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\APIPuertos.genruntimeconfig.cache
 C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\ref\APIPuertos.dll
+C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\APIPuertos.sourcelink.json
+C:\Users\diego\Desktop\Puertos\APIPuertos\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\diego\Desktop\Puertos\APIPuertos\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\diego\Desktop\Puertos\APIPuertos\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\diego\Desktop\Puertos\APIPuertos\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\APIPuertos.csproj.AssemblyReference.cache
+C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\APIPuertos.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\diego\Desktop\Puertos\APIPuertos\obj\Debug\net8.0\APIPuertos.csproj.CopyComplete

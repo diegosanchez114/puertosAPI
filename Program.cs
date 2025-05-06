@@ -1,16 +1,32 @@
 using APIPuertos.Entidades;
 
 var builder = WebApplication.CreateBuilder(args);
-//Inicio Area de los servicios
+var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
 
+//Inicio Area de los servicios
+builder.Services.AddCors(opciones =>
+    opciones.AddDefaultPolicy(configuracion =>
+    {
+        configuracion.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); //Permite todos los origenes y tambien los metodos Get, post, put y delete
+
+    }));
+
+builder.Services.AddOutputCache(); //Swervicio para utilizar cache desde el backend
+
+builder.Services.AddEndpointsApiExplorer(); //Swagger explora los Endpoints
+builder.Services.AddSwaggerGen(); //Añade el servicio de Swagger
 
 
 //Fin Area de los servicios
 var app = builder.Build();
 
 //Inicio de area de los middlewares
+app.UseSwagger();
+app.UseSwaggerUI();
 
+app.UseCors();
 
+app.UseOutputCache();
 
 app.MapGet("/", () => "Hello World!");
 
@@ -22,6 +38,7 @@ app.MapGet("puertos", () =>
         {
             id= 1,
             puerto= "puerto 1",
+            ciudad= "Bogota",
             personaEntrevistada= "Diego",
             cargo= "Ingeniero",
             personaContacto= "Elkin",
@@ -32,6 +49,6 @@ app.MapGet("puertos", () =>
 
     };
     return puertos;
-});
+}).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(15))); //Configura el cache solo para este endpoing t para 15 segundos
 //Fin de area de los middlewares
 app.Run();
