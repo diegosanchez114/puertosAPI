@@ -1,4 +1,6 @@
 using APIPuertos.Entidades;
+using APIPuertos.Repositorios;
+using Microsoft.AspNetCore.OutputCaching;
 
 var builder = WebApplication.CreateBuilder(args);
 var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
@@ -16,6 +18,8 @@ builder.Services.AddOutputCache(); //Swervicio para utilizar cache desde el back
 builder.Services.AddEndpointsApiExplorer(); //Swagger explora los Endpoints
 builder.Services.AddSwaggerGen(); //Añade el servicio de Swagger
 
+builder.Services.AddScoped<IRepositorioPuertos, RepositorioPuertos>(); //Llamammos el IrepositorioPuertos con el RepositorioPuertos
+
 
 //Fin Area de los servicios
 var app = builder.Build();
@@ -30,25 +34,31 @@ app.UseOutputCache();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapGet("puertos", () =>
+app.MapGet("puertos", async(IRepositorioPuertos repositorio) =>
 {
-    var puertos = new List<Puerto>
-    {
-        new Puerto
-        {
-            id= 1,
-            puerto= "puerto 1",
-            ciudad= "Bogota",
-            personaEntrevistada= "Diego",
-            cargo= "Ingeniero",
-            personaContacto= "Elkin",
-            cedula= "12345",
-            correo= "elkin.escobar@upit.gov.co",
-            telefono= "3003358741"
-        }
+    return await repositorio.ObtenerTodos();
+    
+}).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(60)).Tag("puertos-get")); //Configura el cache solo para este endpoing t para 15 segundos
 
-    };
-    return puertos;
-}).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(15))); //Configura el cache solo para este endpoing t para 15 segundos
+
+app.MapGet("puertos/{id:int}", async (int id, IRepositorioPuertos repositorio) =>
+{
+    var puerto= await repositorio.ObtenerPorId(id);
+
+    if (puerto is null)
+    {
+        return Results.NotFound();
+    }
+
+    return Results.Ok(puerto);
+
+}).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(60)));
+
+app.MapPost("/puertos", async (Puerto puerto, IRepositorioPuertos repositorioPuertos, IOutputCacheStore outputCacheStore) => 
+{
+    var id= await repositorioPuertos.CrearPuerto(puerto);
+    await outputCacheStore.EvictByTagAsync("puertos-get", default);
+    return TypedResults.Created($"/puertos/{id}", puerto);
+});
 //Fin de area de los middlewares
 app.Run();
