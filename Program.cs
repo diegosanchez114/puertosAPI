@@ -54,7 +54,7 @@ app.MapGet("puertos/{id:int}", async (int id, IRepositorioPuertos repositorio) =
 
 }).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(60)));
 
-app.MapPost("/puertos", async (Puerto puerto, IRepositorioPuertos repositorioPuertos, IOutputCacheStore outputCacheStore) => 
+app.MapPost("/puertos", async (PuertoDto puerto, IRepositorioPuertos repositorioPuertos, IOutputCacheStore outputCacheStore) => 
 {
     var id= await repositorioPuertos.CrearPuerto(puerto);
     await outputCacheStore.EvictByTagAsync("puertos-get", default);

@@ -4,7 +4,7 @@ namespace APIPuertos.Repositorios
 {
     public interface IRepositorioPuertos
     {
-        Task<int> CrearPuerto(Puerto puerto);
+        Task<int> CrearPuerto(PuertoDto dto);
         Task<Puerto?> ObtenerPorId(int id);
         Task<List<Puerto>> ObtenerTodos();
     }

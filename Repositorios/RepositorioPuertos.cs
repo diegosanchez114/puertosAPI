@@ -36,7 +36,7 @@ namespace APIPuertos.Repositorios
             }
         }
 
-        public async Task<int> CrearPuerto(Puerto puerto)
+        public async Task<int> CrearPuerto(PuertoDto dto)
         {
             using (var conexion = new SqlConnection(connectionString))
             {
@@ -46,8 +46,16 @@ namespace APIPuertos.Repositorios
                                         @cedula, @correo, @telefono, @areaUsoPublico, @areausoAdyacente, @fechaCreacion, @fechaActualizacion);
 
                                         SELECT SCOPE_IDENTITY();
-                                        ", puerto);
-                puerto.id= id;
+                                        ", dto.primero);
+
+                                        foreach (var muelle in dto.segundo.muelles)
+                                        {
+                                            await conexion.ExecuteAsync(
+                                                @"INSERT INTO pueMuelles (puertoId, tipoCargaPrimerSubsistema, muelleLongitud, muelleTipo, muelleCalado, muellePosiciones, muellePorcentajes, muelleRendimiento, maquinaria, operacion, fechaCreacion, fechaActualizacion)
+				                                VALUES (@puertoId, @tipoCargaPrimerSubsistema, @muelleLongitud, @muelleTipo, @muelleCalado, @muellePosiciones, @muellePorcentajes, @muelleRendimiento, @maquinaria, @operacion, @fechaCreacion, @fechaActualizacion);",
+                                                new { PuertoId = id, muelle.tipoCargaPrimerSubsistema, muelle.muelleLongitud, muelle.muelleTipo, muelle.muelleCalado, muelle.muellePosiciones, muelle.muellePorcentajes, muelle.muelleRendimiento, maquinaria= dto.segundo.maquinaria, operacion = dto.segundo.operacion, fechaCreacion = dto.segundo.fechaCreacion, fechaActualizacion = dto.segundo.fechaActualizacion });
+                                        }
+                dto.primero.id= id;
                 return id;
             }            
         }

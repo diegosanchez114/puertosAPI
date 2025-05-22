@@ -13,8 +13,8 @@ namespace APIPuertos.Entidades
         public string cedula {  get; set; } = null!;
         public string correo { get; set; } = null!;
         public string telefono { get; set; } = null!;
-        public int areaUsoPublico { get; set; } = 0!;
-        public int areaUsoAdyacente { get; set; } = 0!;
+        public decimal? areaUsoPublico { get; set; }= 0;
+        public decimal? areaUsoAdyacente { get; set; } = 0!;
 
         public DateTime fechaCreacion { get; set; } = DateTime.Now;
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIPuertos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e638bddf9d1ac70912ad94b9f0ede3b9ff53b04")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12cf7a0e4c5f35da316fd54073528c3ddc282116")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIPuertos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIPuertos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
